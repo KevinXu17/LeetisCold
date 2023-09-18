@@ -1,5 +1,8 @@
 ## https://leetcode.com/problems/unique-binary-search-trees-ii/description/
-
+## Time Complexity
+## the nth: : G(n)=O(4^n / n^1.5)   ## https://en.wikipedia.org/wiki/Catalan_number
+## Catalan number: Cn = (2n!)/( (n+1)! * n! )
+## n * nth => O(4^n / n^0.5)
 class TreeNode:
      def __init__(self, val=0, left=None, right=None):
          self.val = val
