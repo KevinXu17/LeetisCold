@@ -36,6 +36,9 @@ def countPrimes(n):
 
 import math
 # second version to get rid of num with factor 2
+# marks
+# 0 1 2 3 4 5 ...
+# 3 5 7 9 11 13...
 def countPrimes2(n):
     if n < 3:
         return 0
@@ -57,8 +60,11 @@ def countPrimes3(n: int) -> int:
     for i in range(3, int(math.sqrt(n)) + 1, 2):
         if marks[i // 2 - 1] == 1:
             marks[i * i // 2 - 1: n // 2 - 1: i] = [0] * ((n - i * i - 1) // (2 * i) + 1)
+    for i in range(len(marks)):
+        if marks[i] == 1:
+            print(3 + i * 2)
     return sum(marks)
 
 
 
-countPrimes2(49)
+countPrimes3(49)
