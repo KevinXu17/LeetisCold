@@ -35,10 +35,10 @@ def countPrimes(n):
     return sum(marks)
 
 import math
-# second version to get rid of num with factor 2
+# second version to get rid of num with factor 2: faster and less mem
 # marks
 # 0 1 2 3 4 5 ...
-# 3 5 7 9 11 13...
+# 3 5 7 9 11 13...idx//2 -1
 def countPrimes2(n):
     if n < 3:
         return 0
@@ -49,10 +49,10 @@ def countPrimes2(n):
                 marks[mul//2 - 1] = 0
     for i in range(len(marks)):
         if marks[i] == 1:
-            print(3 + i * 2)
+            print((i+1)*2 + 1)
     return sum(marks)
 
-
+# fastest
 def countPrimes3(n: int) -> int:
     if n < 3:
         return 0
@@ -62,9 +62,9 @@ def countPrimes3(n: int) -> int:
             marks[i * i // 2 - 1: n // 2 - 1: i] = [0] * ((n - i * i - 1) // (2 * i) + 1)
     for i in range(len(marks)):
         if marks[i] == 1:
-            print(3 + i * 2)
+            print((i+1)*2 + 1)
     return sum(marks)
 
 
 
-countPrimes3(49)
+countPrimes3(1000)
