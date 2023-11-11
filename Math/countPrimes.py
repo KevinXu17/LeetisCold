@@ -44,10 +44,21 @@ def countPrimes2(n):
         if marks[i//2 - 1] == 1:
             for mul in range(i*i, n, 2*i):
                 marks[mul//2 - 1] = 0
+    for i in range(len(marks)):
+        if marks[i] == 1:
+            print(3 + i * 2)
+    return sum(marks)
+
+
+def countPrimes3(n: int) -> int:
+    if n < 3:
+        return 0
+    marks = [1] * (n // 2)
+    for i in range(3, int(math.sqrt(n)) + 1, 2):
+        if marks[i // 2 - 1] == 1:
+            marks[i * i // 2 - 1: n // 2 - 1: i] = [0] * ((n - i * i - 1) // (2 * i) + 1)
     return sum(marks)
 
 
 
-
-
-countPrimes(49)
+countPrimes2(49)
