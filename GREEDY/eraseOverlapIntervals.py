@@ -1,3 +1,4 @@
+# https://leetcode.com/problems/non-overlapping-intervals/description/
 def eraseOverlapIntervals(intervals):
     intervals.sort(key=lambda x: x[1])
     res = 0
