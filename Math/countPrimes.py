@@ -14,6 +14,8 @@
 ## 1） mark all not primes with their factors from 2 to sqrt(n)
 
 def countPrimes(n):
+    if n < 3:
+        return 0
     marks = [1] * n
     marks[0] = marks[1] = 0
     m = 2
@@ -31,6 +33,20 @@ def countPrimes(n):
         if marks[i] == 1:
             print(i)
     return sum(marks)
+
+import math
+# second version to get rid of num with factor 2
+def countPrimes2(n):
+    if n < 3:
+        return 0
+    marks = [1] * (n//2)
+    for i in range(3, int(math.sqrt(n) + 1), 2):
+        if marks[i//2 - 1] == 1:
+            for mul in range(i*i, n, 2*i):
+                marks[mul//2 - 1] = 0
+    return sum(marks)
+
+
 
 
 
