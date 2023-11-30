@@ -11,7 +11,7 @@ def convertToBase7(num: int) -> str:
     return sign + base7
 
 
-
+# https://leetcode.com/problems/convert-a-number-to-hexadecimal/submissions/
 def toHex(num: int) -> int:
     hexMap = '0123456789abcdef'
     if num == 0: return '0'
