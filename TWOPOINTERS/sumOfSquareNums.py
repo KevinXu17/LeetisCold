@@ -25,7 +25,7 @@ def judgeSquareSum(c: int):
         if divisor_map[i] == 0:
             # for j in range(i, sqrt_c, i):
             #     divisor_map[j] = 1
-            ## update this improve performance to cross out not prime number
+            ## update this improves performance to cross out not prime number
             divisor_map[i::i] = [1] * ((sqrt_c - i) // i + 1)
             count = 0
             while c % i == 0:

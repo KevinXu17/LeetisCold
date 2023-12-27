@@ -1,6 +1,6 @@
-
+# https://leetcode.com/problems/shortest-path-in-binary-matrix/
 from queue import Queue
-
+from typing import List
 def shortestPathBinaryMatrix(grid):
     directions = [[-1, -1], [-1, 0], [-1, 1],
                   [0, -1], [0, 1],
@@ -24,6 +24,39 @@ def shortestPathBinaryMatrix(grid):
             nxt[0], nxt[1]) not in viewedPos:
                 quePos.put((idx + 1, nxt))
                 viewedPos[(nxt[0], nxt[1])] = 1
+    return -1
+
+"""
+    update
+    1) use deque -> Queue
+    2) change gird directly when walk through (1)
+"""
+
+def shortestPathBinaryMatrix2(grid: List[List[int]]) -> int:
+    from collections import deque
+    directions = [[-1, -1], [-1, 0], [-1, 1],
+                  [0, -1], [0, 1],
+                  [1, -1], [1, 0], [1, 1]]
+    viewed = set()
+    q = deque()
+    if grid[0][0] == 1:
+        return -1
+    q.append((1, [0, 0]))
+    grid[0][0] = 1
+
+    x_end = len(grid) - 1
+    y_end = len(grid[0]) - 1
+
+    while q:
+        idx, pos = q.popleft()
+        if pos == [x_end, y_end]:
+            return idx
+        for d in directions:
+            new_pos = [pos[0] + d[0], pos[1] + d[1]]
+            if new_pos[0] >= 0 and new_pos[0] <= x_end and new_pos[1] >= 0 and new_pos[1] <= y_end and grid[new_pos[0]][
+                new_pos[1]] == 0:
+                q.append((idx + 1, new_pos))
+                grid[new_pos[0]][new_pos[1]] = 1
     return -1
 
 
