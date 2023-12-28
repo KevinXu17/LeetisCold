@@ -1,4 +1,5 @@
 dirctions = [(-1, 0), (0, 1), (1, 0), (0, -1)]
+# https://leetcode.com/problems/max-area-of-island/description/
 ## dfs
 def maxAreaOfIsland(grid):
     if not grid:

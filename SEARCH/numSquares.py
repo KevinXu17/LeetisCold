@@ -1,7 +1,24 @@
 import collections
 
+# https://leetcode.com/problems/perfect-squares/description/
+
+"""
+    1)
+    assume diff is the destination of result if it reaches 0
+    if some diff is marked, which means some less # combination have been reached there
+    and wont put into the queue
+    candidate: diff
+    view: diff
+    2)
+    dynamic programing version
+"""
 
 def numSquares(n: int) -> int:
+    """
+        only use add to fine all square #
+        1 4 9 16 25 ...
+         3 5 7  9 ...
+    """
     def getSquares(num):
         res = []
         diff = 3
@@ -14,6 +31,7 @@ def numSquares(n: int) -> int:
 
     squares = getSquares(n)
     mem_map = [0] * (n + 1)
+    # Queue for all unseen diff
     que = collections.deque()
     que.append((0, n))
     while 1 == 1:
