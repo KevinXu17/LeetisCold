@@ -1,5 +1,9 @@
 
 ## https://leetcode.com/problems/assign-cookies/description/
+
+"""
+    greedy always come with sort
+"""
 def findContentChildren(g, s) -> int:
     g.sort()
     s.sort()
