@@ -1,5 +1,8 @@
 ## https://leetcode.com/problems/partition-labels/description/
 
+"""
+    each char has a range: check whether it has char in range over range
+"""
 
 def partitionLabels(s):
     reversed_index = {}
@@ -27,7 +30,32 @@ def partitionLabels(s):
     res[pivot] = rg - l + 1
     return res
 
-print(partitionLabels("bbvemgjwruuwalp"))
+def partitionLabels2(s: str):
+    # char begin_position
+    char_position = {}
+    # idx begin_position, value end_position
+    list_map = [-1] * len(s)
+    for i in range(len(s)):
+        if s[i] in char_position:
+            list_map[char_position[s[i]]] = i
+        else:
+            char_position[s[i]] = i
+        list_map[i] = i
+    res = []
+    i = 0
+    while i < len(list_map):
+        j = list_map[i]
+        rg = max(list_map[i:j + 1])
+        # push to maximum range
+        while rg > j:
+            temp = j
+            j = rg
+            rg = max(list_map[temp:j + 1])
+
+        res.append(rg - i + 1)
+        i = rg + 1
+    return res
+print(partitionLabels2("ababcbacadefegdehijhklij"))
 
 
 
