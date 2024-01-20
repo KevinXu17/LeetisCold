@@ -1,5 +1,9 @@
 ## https://leetcode.com/problems/different-ways-to-add-parentheses/description/
 
+"""
+    Divide and Conquer  ++ memo or @cache to function
+"""
+
 def diffWaysToCompute(expression):
     ## TODO Memo
     dic_map = {}
