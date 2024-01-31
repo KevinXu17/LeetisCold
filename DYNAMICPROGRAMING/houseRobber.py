@@ -1,6 +1,9 @@
 ## https://leetcode.com/problems/house-robber/description/
 
-## DP
+"""
+    dp[i] = max(dp[i-2] + nums[i] , dp[i-1])
+    same as climbStairs
+"""
 def rob(nums):
     mem = {}
     mem[0] = nums[0]

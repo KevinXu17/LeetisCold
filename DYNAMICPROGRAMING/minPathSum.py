@@ -4,6 +4,9 @@
 ## https://leetcode.com/problems/minimum-path-sum/description/
 from typing import List
 
+"""
+    dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + grid[i][j]
+"""
 ## dp x y
 def minPathSum(grid: List[List[int]]) -> int:
     ## dp[(x, y)] = min(dp[(x-1, y)], dp[(x, y - 1)]) + itself
