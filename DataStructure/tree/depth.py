@@ -31,3 +31,49 @@ def maxDepth(root: Optional[TreeNode]) -> int:
         level += 1
     return level
 
+# isbalance => compare the height of left and right
+
+
+# diameter => sum left and right when computing the height
+# https://leetcode.com/problems/diameter-of-binary-tree/description/
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def __init__(self):
+        self.diameter = 0
+
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        self.max_height_helper(root)
+        return self.diameter
+
+    def max_height_helper(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        if root.left:
+            l = self.max_height_helper(root.left)
+        else:
+            l = 0
+        if root.right:
+            r = self.max_height_helper(root.right)
+        else:
+            r = 0
+        self.diameter = max(self.diameter, l + r)
+        return 1 + max(l, r)
+
+
+    # def isBalanced(self, root: Optional[TreeNode]) -> bool:
+    #     def dfs(root):
+    #         if not root:
+    #             return (0,True)
+    #         left,right= dfs(root.left), dfs(root.right)
+    #         return (1+max(left[0],right[0]), left[1] and right[1] and (abs(left[0]-right[0]) <=1 ) )
+    #     return dfs(root)[1]==True
+
+
+
